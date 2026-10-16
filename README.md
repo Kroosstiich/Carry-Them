@@ -3,7 +3,8 @@
 A Skyrim Special Edition mod: the player carries an NPC on their back. The reverse of
 [Carry Me](https://www.nexusmods.com/skyrimspecialedition/mods/194011), where NPCs carry the player.
 
-Nexus page: *link coming with the release*. This repository holds the source.
+Download: [Carry Them on Nexus Mods](https://www.nexusmods.com/skyrimspecialedition/mods/195568).
+This repository holds the source.
 
 ## Requirements (in game)
 
