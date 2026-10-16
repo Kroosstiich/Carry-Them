@@ -1,0 +1,15 @@
+{
+    "name": "Rider",
+    "description": "Holding-on pose for the NPC carried on the player's back (idle, walk, run).",
+    "priority": 2099002001,
+    "conditions": [
+        {
+            "condition": "HasSpell",
+            "requiredVersion": "1.0.0.0",
+            "Spell": {
+                "pluginName": "CarryThem.esp",
+                "formID": "000804"
+            }
+        }
+    ]
+}

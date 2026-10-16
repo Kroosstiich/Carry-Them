@@ -1,0 +1,53 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Exit-9B/MCM-Helper/main/docs/config.schema.json",
+  "modName": "CarryThem",
+  "displayName": "Carry Them",
+  "minMcmVersion": 13,
+  "cursorFillMode": "topToBottom",
+  "content": [
+    {
+      "text": "Rider position",
+      "type": "header"
+    },
+    {
+      "text": "Takes effect the next time you pick someone up.",
+      "type": "text"
+    },
+    {
+      "text": "Height",
+      "type": "slider",
+      "help": "Up and down. Lower it if the rider sits too high. Console: set CT_OffsetZ to <value>",
+      "valueOptions": {
+        "min": -100, "max": 50, "step": 1, "formatString": "{0}",
+        "sourceType": "GlobalValue", "sourceForm": "CarryThem.esp|809", "defaultValue": -25
+      }
+    },
+    {
+      "text": "Back / forward",
+      "type": "slider",
+      "help": "More negative moves the rider further back. Console: set CT_OffsetY to <value>",
+      "valueOptions": {
+        "min": -100, "max": 50, "step": 1, "formatString": "{0}",
+        "sourceType": "GlobalValue", "sourceForm": "CarryThem.esp|808", "defaultValue": -35
+      }
+    },
+    {
+      "text": "Left / right",
+      "type": "slider",
+      "help": "Positive moves the rider to the right. Console: set CT_OffsetX to <value>",
+      "valueOptions": {
+        "min": -50, "max": 50, "step": 1, "formatString": "{0}",
+        "sourceType": "GlobalValue", "sourceForm": "CarryThem.esp|807", "defaultValue": 0
+      }
+    },
+    {
+      "text": "Rotation",
+      "type": "slider",
+      "help": "Turns the rider, in degrees. Positive turns it to the right. Console: set CT_Rotation to <value>",
+      "valueOptions": {
+        "min": -90, "max": 90, "step": 1, "formatString": "{0}°",
+        "sourceType": "GlobalValue", "sourceForm": "CarryThem.esp|80A", "defaultValue": 10
+      }
+    }
+  ]
+}

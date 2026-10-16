@@ -1,0 +1,18 @@
+Carry Them
+Copyright (c) 2026 Kroosstiich
+
+SPDX-License-Identifier: GPL-3.0-or-later
+
+The code of Carry Them (Papyrus scripts, the plugin generator, the build scripts and the
+configuration files) is free software: you can redistribute it and/or modify it under the terms of
+the GNU General Public License as published by the Free Software Foundation, either version 3 of
+the License, or (at your option) any later version.
+
+It is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the
+implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See COPYING.txt for the
+full license.
+
+NOT covered by this license: the animation files (*.hkx under Data/meshes). They come from
+Carry Me by Fflower (https://www.nexusmods.com/skyrimspecialedition/mods/194011) and remain
+Fflower's work. They are reused under Carry Me's permissions: credit Fflower, no Donation Points,
+no paid mods, no conversion to other games.

@@ -1,0 +1,15 @@
+{
+    "name": "Carrier",
+    "description": "Carrying pose of the player, layered over movement by Offset Movement Animation.",
+    "priority": 2099002000,
+    "conditions": [
+        {
+            "condition": "HasSpell",
+            "requiredVersion": "1.0.0.0",
+            "Spell": {
+                "pluginName": "CarryThem.esp",
+                "formID": "000806"
+            }
+        }
+    ]
+}
