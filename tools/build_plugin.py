@@ -151,7 +151,8 @@ def build():
     groups = group(b"GLOB", globs) + group(b"MGEF", mgefs) + group(b"SPEL", spells) + group(b"QUST", quests)
     count = len(globs) + len(mgefs) + len(spells) + len(quests) + 4    # records + top groups
     head = b"".join(sub(s, d) for s, d in [
-        (b"HEDR", struct.pack("<fII", 1.71, count, NEXT_OBJECT_ID)), (b"CNAM", z("Kroosstii")),
+        # 1.70, not 1.71: 1.71 needs Skyrim 1.6.1130+ (or BEES), and our IDs (0x800+) fit 1.70 anyway.
+        (b"HEDR", struct.pack("<fII", 1.70, count, NEXT_OBJECT_ID)), (b"CNAM", z("Kroosstii")),
         (b"SNAM", z("Carry Them: carry an NPC on your back. Uses Piggyback, Offset Movement Animation and OAR.")),
         (b"MAST", z("Skyrim.esm")), (b"DATA", b"\0" * 8),
     ])
