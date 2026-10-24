@@ -20,6 +20,16 @@
       }
     },
     {
+      "text": "$CT_PromptToggle",
+      "type": "toggle",
+      "help": "$CT_PromptToggleHelp",
+      "valueOptions": {
+        "sourceType": "GlobalValue",
+        "sourceForm": "CarryThem.esp|818",
+        "defaultValue": true
+      }
+    },
+    {
       "text": "$CT_BackPosition",
       "type": "header"
     },

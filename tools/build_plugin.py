@@ -19,6 +19,7 @@ Records (local FormIDs, also used by the OAR configs - keep them stable):
   0x812-0x815 GLOB CT_PrincessOffsetX / Y / Z, CT_PrincessRotation
   0x816 MESG CT_StyleMenu        the power's menu: on the back / in the arms / cancel
   0x817 GLOB CT_Hotkey           optional key (DirectX scan code, -1 = none): carry the NPC in the crosshair
+  0x818 GLOB CT_PromptEnabled    1 = the optional SkyPrompt prompt is shown (MCM toggle; read by CarryThem - SkyPrompt.esp)
 Also builds the optional "CarryThem - Dialogue.esp" (see build_dialogue) with its SEQ file, and
 "CarryThem - SkyPrompt.esp" (see build_skyprompt).
 Usage: python build_plugin.py <output folder> [en|fr]   (language of the in-game texts, en by default)
@@ -30,8 +31,8 @@ OWN = 0x01000000                     # one master (Skyrim.esm) -> our records us
 QUEST, HOP_MGEF, HOP_SPEL, CARRIED_MGEF, CARRIED_SPEL, CARRYING_MGEF, CARRYING_SPEL = range(OWN | 0x800, OWN | 0x807)
 OFFSET_X, OFFSET_Y, OFFSET_Z, ROTATION, MCM_QUEST = range(OWN | 0x807, OWN | 0x80C)
 (P_CARRIED_MGEF, P_CARRIED_SPEL, P_CARRYING_MGEF, P_CARRYING_SPEL,
- P_OFFSET_X, P_OFFSET_Y, P_OFFSET_Z, P_ROTATION, STYLE_MENU, HOTKEY) = range(OWN | 0x80E, OWN | 0x818)
-NEXT_OBJECT_ID = 0x818
+ P_OFFSET_X, P_OFFSET_Y, P_OFFSET_Z, P_ROTATION, STYLE_MENU, HOTKEY, PROMPT_ENABLED) = range(OWN | 0x80E, OWN | 0x819)
+NEXT_OBJECT_ID = 0x819
 OFFSET_DEFAULTS = (0.0, -35.0, -25.0)  # tuned in game (Carry Me's piggyback was 0, -30, 0)
 ROTATION_DEFAULT = 10.0                # tuned in game: the pose faced slightly left
 P_OFFSET_DEFAULTS = (30.0, 34.0, -10.0)  # Carry Me's bridal carry on the left forearm, Y and Z tuned in game (were 35, 15)
@@ -83,6 +84,8 @@ TRANSLATIONS = {
         "$CT_Controls": "Controls",
         "$CT_CarryKey": "Carry key",
         "$CT_CarryKeyHelp": "Look at someone and press it to pick them up (a menu asks how), press it again to set them down. Optional: the Carry Them power does the same.",
+        "$CT_PromptToggle": "SkyPrompt prompt",
+        "$CT_PromptToggleHelp": "Shows the prompt when you look at someone. Only if you picked the SkyPrompt option in the installer.",
         "$CT_BackPosition": "Piggyback position",
         "$CT_TakesEffect": "Takes effect the next time you pick someone up.",
         "$CT_Height": "Height",
@@ -109,6 +112,8 @@ TRANSLATIONS = {
         "$CT_Controls": "Commandes",
         "$CT_CarryKey": "Touche de portage",
         "$CT_CarryKeyHelp": "Regardez quelqu'un et appuyez sur cette touche pour le porter (un menu vous demande comment). Appuyez de nouveau pour le reposer. Facultatif : le pouvoir Carry Them fait la même chose.",
+        "$CT_PromptToggle": "Invite SkyPrompt",
+        "$CT_PromptToggleHelp": "Affiche l'invite quand vous regardez quelqu'un. Seulement si vous avez choisi l'option SkyPrompt dans l'installateur.",
         "$CT_BackPosition": "Position sur le dos",
         "$CT_TakesEffect": "S'applique la prochaine fois que vous portez quelqu'un.",
         "$CT_Height": "Hauteur",
@@ -229,7 +234,8 @@ def build():
     globs += [glob(fid, "CT_PrincessOffset" + axis, value)
               for fid, axis, value in zip((P_OFFSET_X, P_OFFSET_Y, P_OFFSET_Z), "XYZ", P_OFFSET_DEFAULTS)]
     globs.append(glob(P_ROTATION, "CT_PrincessRotation", 0.0))
-    globs.append(glob(HOTKEY, "CT_Hotkey", -1.0))                     # -1: unbound (SkyUI shows 0 as a key)
+    globs.append(glob(HOTKEY, "CT_Hotkey", -1.0))
+    globs.append(glob(PROMPT_ENABLED, "CT_PromptEnabled", 1.0))                     # -1: unbound (SkyUI shows 0 as a key)
     mgefs = [
         mgef(HOP_MGEF, "CT_HopOnEffect", t("power"), FIRE_AND_FORGET, TARGET_ACTOR,
              scripts(script("CT_HopOnEffect", [prop("Control", QUEST)]))),
@@ -401,7 +407,7 @@ def build_skyprompt():
              glob(S_PAD_KEY, "CT_PromptGamepadKey", 278.0)]      # X / Square, as RSE
     control = script("CT_SkyPrompt", [
         prop("ActorTypeNPC", ACTOR_TYPE_NPC), prop("Control", D_MAIN | 0x800),
-        prop("GamepadKey", S_PAD_KEY), prop("KeyboardKey", S_KEY),
+        prop("Enabled", D_MAIN | 0x818), prop("GamepadKey", S_PAD_KEY), prop("KeyboardKey", S_KEY),
         prop_str("CarryText", t("prompt_carry")), prop_str("DropText", t("prompt_drop")),
     ])
     quest = record(b"QUST", S_QUEST, [

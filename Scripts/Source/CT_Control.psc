@@ -199,6 +199,7 @@ Function Settle(Actor akRider)
 	endif
 	jumpKey = Input.GetMappedKey("Jump")
 	RegisterForKey(jumpKey)
+	SendModEvent("CarryThem_Changed") ; the optional SkyPrompt prompt switches to "Set down"
 EndFunction
 
 Function Drop()
@@ -223,6 +224,9 @@ Function Drop()
 	rider.SetHeadTracking(true)
 	rider.SetDontMove(false)
 	rider.EnableAI(true) ; saves from builds 0.1.1-0.1.3 may hold the rider with its AI off
+	; OAR keeps the pose it picked until the idle restarts: the rider sat on the ground in it.
+	Debug.SendAnimationEvent(rider, "IdleForceDefaultState")
+	SendModEvent("CarryThem_Changed")
 	Log("Drop done " + rider)
 EndFunction
 
