@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<fomod>
+  <Name>Carry Them</Name>
+  <Author>Kroosstii</Author>
+  <Version MachineVersion="1.1.0">1.1.0</Version>
+  <Description>Carry an NPC on your back or in your arms. Requires Piggyback, Offset Movement Animation and Open Animation Replacer.</Description>
+  <Website>https://www.nexusmods.com/skyrimspecialedition/mods/195568</Website>
+  <Groups>
+    <element>Animation</element>
+    <element>Gameplay</element>
+  </Groups>
+</fomod>

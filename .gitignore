@@ -7,3 +7,7 @@ local.paths.ps1
 Data/CarryThem.esp
 Data/Scripts/*.pex
 release/
+Data/CarryThem - Dialogue.esp
+Data/SEQ/
+Data/CarryThem - SkyPrompt.esp
+Data/Interface/

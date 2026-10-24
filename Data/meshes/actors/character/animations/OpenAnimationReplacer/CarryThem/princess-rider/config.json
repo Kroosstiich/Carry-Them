@@ -1,0 +1,15 @@
+{
+    "name": "Princess Rider",
+    "description": "Pose of the NPC held in the player's arms (princess carry), under all its movement animations.",
+    "priority": 2099002003,
+    "conditions": [
+        {
+            "condition": "HasSpell",
+            "requiredVersion": "1.0.0.0",
+            "Spell": {
+                "pluginName": "CarryThem.esp",
+                "formID": "00080F"
+            }
+        }
+    ]
+}

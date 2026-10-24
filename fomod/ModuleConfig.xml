@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://qconsulting.ca/fo3/ModConfig5.0.xsd">
+
+  <moduleName>Carry Them</moduleName>
+
+  <!-- Always installed: CarryThem.esp, its scripts, the poses and the MCM (power + optional key). -->
+  <requiredInstallFiles>
+    <folder source="Core" destination="" priority="0" />
+  </requiredInstallFiles>
+
+  <installSteps order="Explicit">
+
+    <!-- Step 1: the language only changes the installer's texts (the "language" flag); the files are the same. -->
+    <installStep name="Language / Langue">
+      <optionalFileGroups order="Explicit">
+        <group name="Language / Langue" type="SelectExactlyOne">
+          <plugins order="Explicit">
+
+            <plugin name="English">
+              <description>Shows the installer in English.
+
+The mod's in-game texts (power, menus, dialogue, MCM) will be in English.</description>
+              <files />
+              <conditionFlags>
+                <flag name="language">en</flag>
+              </conditionFlags>
+              <typeDescriptor>
+                <type name="Recommended" />
+              </typeDescriptor>
+            </plugin>
+
+            <plugin name="Français">
+              <description>Affiche l'installateur en français.
+
+Les textes du mod en jeu (pouvoir, menus, dialogue, MCM) seront aussi en français.</description>
+              <files />
+              <conditionFlags>
+                <flag name="language">fr</flag>
+              </conditionFlags>
+              <typeDescriptor>
+                <type name="Optional" />
+              </typeDescriptor>
+            </plugin>
+
+          </plugins>
+        </group>
+      </optionalFileGroups>
+    </installStep>
+
+    <!-- Step 2, English -->
+    <installStep name="Ways to pick someone up">
+      <visible>
+        <dependencies operator="And">
+          <flagDependency flag="language" value="en" />
+        </dependencies>
+      </visible>
+      <optionalFileGroups order="Explicit">
+        <group name="Extra ways to pick someone up (the power is always included)" type="SelectAny">
+          <plugins order="Explicit">
+
+            <plugin name="Dialogue line">
+              <description>Adds a line when you talk to someone: "Let me carry you." They ask how, and you pick "On my back.", "In my arms." or "Never mind.".
+
+The NPC's replies are not voiced: they only show as subtitles.
+
+Adds a small plugin: CarryThem - Dialogue.esp (ESL flagged).
+
+Always included, whatever you pick here: the "Carry Them" power, and a key you can set in the MCM (Controls, Carry key). No key is set by default.</description>
+              <files>
+                <folder source="Dialogue" destination="" priority="1" />
+              </files>
+              <conditionFlags>
+                <flag name="dialogue">on</flag>
+              </conditionFlags>
+              <typeDescriptor>
+                <type name="Optional" />
+              </typeDescriptor>
+            </plugin>
+
+            <plugin name="SkyPrompt prompt">
+              <description>Shows a prompt when you look at someone: hold G (X / Square on a gamepad) to carry them. While you carry someone, the same prompt sets them down.
+
+REQUIRES SkyPrompt. Without it, this option does nothing.
+
+To use another key, see "Settings without the MCM" on the mod page.
+
+Adds a small plugin: CarryThem - SkyPrompt.esp (ESL flagged).</description>
+              <files>
+                <folder source="SkyPrompt" destination="" priority="1" />
+              </files>
+              <conditionFlags>
+                <flag name="skyprompt">on</flag>
+              </conditionFlags>
+              <typeDescriptor>
+                <dependencyType>
+                  <!-- Still selectable without SkyPrompt (it may be installed afterwards), only flagged. -->
+                  <defaultType name="CouldBeUsable" />
+                  <patterns>
+                    <pattern>
+                      <dependencies operator="And">
+                        <fileDependency file="SKSE\Plugins\SkyPrompt.dll" state="Active" />
+                      </dependencies>
+                      <type name="Optional" />
+                    </pattern>
+                  </patterns>
+                </dependencyType>
+              </typeDescriptor>
+            </plugin>
+
+          </plugins>
+        </group>
+      </optionalFileGroups>
+    </installStep>
+
+    <!-- Étape 2, français -->
+    <installStep name="Façons de porter quelqu'un">
+      <visible>
+        <dependencies operator="And">
+          <flagDependency flag="language" value="fr" />
+        </dependencies>
+      </visible>
+      <optionalFileGroups order="Explicit">
+        <group name="Autres façons de porter quelqu'un (le pouvoir est toujours inclus)" type="SelectAny">
+          <plugins order="Explicit">
+
+            <plugin name="Ligne de dialogue">
+              <description>Ajoute une ligne de dialogue quand vous parlez à quelqu'un : « Let me carry you. ». Le PNJ vous demande comment, et vous choisissez « On my back. » (sur le dos), « In my arms. » (dans les bras) ou « Never mind. » (laisser tomber).
+
+Les répliques du PNJ ne sont pas doublées : elles s'affichent seulement en sous-titres.
+
+Ajoute un petit plugin : CarryThem - Dialogue.esp (marqué ESL).
+
+Toujours inclus, quel que soit votre choix ici : le pouvoir « Carry Them » et une touche à régler dans le MCM (Controls, Carry key). Aucune touche n'est attribuée par défaut.</description>
+              <files>
+                <folder source="Dialogue" destination="" priority="1" />
+              </files>
+              <conditionFlags>
+                <flag name="dialogue">on</flag>
+              </conditionFlags>
+              <typeDescriptor>
+                <type name="Optional" />
+              </typeDescriptor>
+            </plugin>
+
+            <plugin name="Invite SkyPrompt">
+              <description>Affiche une invite quand vous regardez quelqu'un : maintenez G (X / Carré à la manette) pour le porter. Pendant le portage, la même invite le repose.
+
+NÉCESSITE SkyPrompt. Sans lui, cette option ne fait rien.
+
+Pour utiliser une autre touche, consultez « Réglages sans le MCM » sur la page du mod.
+
+Ajoute un petit plugin : CarryThem - SkyPrompt.esp (marqué ESL).</description>
+              <files>
+                <folder source="SkyPrompt" destination="" priority="1" />
+              </files>
+              <conditionFlags>
+                <flag name="skyprompt">on</flag>
+              </conditionFlags>
+              <typeDescriptor>
+                <dependencyType>
+                  <defaultType name="CouldBeUsable" />
+                  <patterns>
+                    <pattern>
+                      <dependencies operator="And">
+                        <fileDependency file="SKSE\Plugins\SkyPrompt.dll" state="Active" />
+                      </dependencies>
+                      <type name="Optional" />
+                    </pattern>
+                  </patterns>
+                </dependencyType>
+              </typeDescriptor>
+            </plugin>
+
+          </plugins>
+        </group>
+      </optionalFileGroups>
+    </installStep>
+
+  </installSteps>
+
+  <!-- French in-game texts: same FormIDs, the French plugins and translation files replace the English ones. -->
+  <conditionalFileInstalls>
+    <patterns>
+      <pattern>
+        <dependencies operator="And">
+          <flagDependency flag="language" value="fr" />
+        </dependencies>
+        <files>
+          <folder source="Core French" destination="" priority="2" />
+        </files>
+      </pattern>
+      <pattern>
+        <dependencies operator="And">
+          <flagDependency flag="language" value="fr" />
+          <flagDependency flag="dialogue" value="on" />
+        </dependencies>
+        <files>
+          <folder source="Dialogue French" destination="" priority="2" />
+        </files>
+      </pattern>
+      <pattern>
+        <dependencies operator="And">
+          <flagDependency flag="language" value="fr" />
+          <flagDependency flag="skyprompt" value="on" />
+        </dependencies>
+        <files>
+          <folder source="SkyPrompt French" destination="" priority="2" />
+        </files>
+      </pattern>
+    </patterns>
+  </conditionalFileInstalls>
+</config>

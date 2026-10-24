@@ -6,47 +6,141 @@
   "cursorFillMode": "topToBottom",
   "content": [
     {
-      "text": "Rider position",
+      "text": "$CT_Controls",
       "type": "header"
     },
     {
-      "text": "Takes effect the next time you pick someone up.",
+      "text": "$CT_CarryKey",
+      "type": "keymap",
+      "help": "$CT_CarryKeyHelp",
+      "valueOptions": {
+        "sourceType": "GlobalValue",
+        "sourceForm": "CarryThem.esp|817",
+        "defaultValue": -1
+      }
+    },
+    {
+      "text": "$CT_BackPosition",
+      "type": "header"
+    },
+    {
+      "text": "$CT_TakesEffect",
       "type": "text"
     },
     {
-      "text": "Height",
+      "text": "$CT_Height",
       "type": "slider",
-      "help": "Up and down. Lower it if the rider sits too high. Console: set CT_OffsetZ to <value>",
+      "help": "$CT_HeightHelp",
       "valueOptions": {
-        "min": -100, "max": 50, "step": 1, "formatString": "{0}",
-        "sourceType": "GlobalValue", "sourceForm": "CarryThem.esp|809", "defaultValue": -25
+        "min": -100,
+        "max": 50,
+        "step": 1,
+        "formatString": "{0}",
+        "sourceType": "GlobalValue",
+        "sourceForm": "CarryThem.esp|809",
+        "defaultValue": -25
       }
     },
     {
-      "text": "Back / forward",
+      "text": "$CT_BackForward",
       "type": "slider",
-      "help": "More negative moves the rider further back. Console: set CT_OffsetY to <value>",
+      "help": "$CT_BackForwardHelp",
       "valueOptions": {
-        "min": -100, "max": 50, "step": 1, "formatString": "{0}",
-        "sourceType": "GlobalValue", "sourceForm": "CarryThem.esp|808", "defaultValue": -35
+        "min": -100,
+        "max": 50,
+        "step": 1,
+        "formatString": "{0}",
+        "sourceType": "GlobalValue",
+        "sourceForm": "CarryThem.esp|808",
+        "defaultValue": -35
       }
     },
     {
-      "text": "Left / right",
+      "text": "$CT_LeftRight",
       "type": "slider",
-      "help": "Positive moves the rider to the right. Console: set CT_OffsetX to <value>",
+      "help": "$CT_LeftRightHelp",
       "valueOptions": {
-        "min": -50, "max": 50, "step": 1, "formatString": "{0}",
-        "sourceType": "GlobalValue", "sourceForm": "CarryThem.esp|807", "defaultValue": 0
+        "min": -50,
+        "max": 50,
+        "step": 1,
+        "formatString": "{0}",
+        "sourceType": "GlobalValue",
+        "sourceForm": "CarryThem.esp|807",
+        "defaultValue": 0
       }
     },
     {
-      "text": "Rotation",
+      "text": "$CT_Rotation",
       "type": "slider",
-      "help": "Turns the rider, in degrees. Positive turns it to the right. Console: set CT_Rotation to <value>",
+      "help": "$CT_RotationHelp",
       "valueOptions": {
-        "min": -90, "max": 90, "step": 1, "formatString": "{0}°",
-        "sourceType": "GlobalValue", "sourceForm": "CarryThem.esp|80A", "defaultValue": 10
+        "min": -90,
+        "max": 90,
+        "step": 1,
+        "formatString": "{0}°",
+        "sourceType": "GlobalValue",
+        "sourceForm": "CarryThem.esp|80A",
+        "defaultValue": 10
+      }
+    },
+    {
+      "text": "$CT_ArmsPosition",
+      "type": "header"
+    },
+    {
+      "text": "$CT_Height",
+      "type": "slider",
+      "help": "$CT_ArmsHeightHelp",
+      "valueOptions": {
+        "min": -100,
+        "max": 100,
+        "step": 1,
+        "formatString": "{0}",
+        "sourceType": "GlobalValue",
+        "sourceForm": "CarryThem.esp|814",
+        "defaultValue": -10
+      }
+    },
+    {
+      "text": "$CT_BackForward",
+      "type": "slider",
+      "help": "$CT_ArmsBackForwardHelp",
+      "valueOptions": {
+        "min": -100,
+        "max": 100,
+        "step": 1,
+        "formatString": "{0}",
+        "sourceType": "GlobalValue",
+        "sourceForm": "CarryThem.esp|813",
+        "defaultValue": 34
+      }
+    },
+    {
+      "text": "$CT_LeftRight",
+      "type": "slider",
+      "help": "$CT_ArmsLeftRightHelp",
+      "valueOptions": {
+        "min": -100,
+        "max": 100,
+        "step": 1,
+        "formatString": "{0}",
+        "sourceType": "GlobalValue",
+        "sourceForm": "CarryThem.esp|812",
+        "defaultValue": 30
+      }
+    },
+    {
+      "text": "$CT_Rotation",
+      "type": "slider",
+      "help": "$CT_ArmsRotationHelp",
+      "valueOptions": {
+        "min": -180,
+        "max": 180,
+        "step": 1,
+        "formatString": "{0}°",
+        "sourceType": "GlobalValue",
+        "sourceForm": "CarryThem.esp|815",
+        "defaultValue": 0
       }
     }
   ]

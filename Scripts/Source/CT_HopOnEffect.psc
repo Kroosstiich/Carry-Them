@@ -1,5 +1,5 @@
 Scriptname CT_HopOnEffect extends ActiveMagicEffect
-; Effect of the "Carry Them" power: picks up the target, or sets the current rider down.
+; Effect of the "Carry Them" power: picks up the target (after a menu), or sets the current rider down.
 
 CT_Control Property Control Auto
 

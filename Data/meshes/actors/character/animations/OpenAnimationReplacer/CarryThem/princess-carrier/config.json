@@ -1,0 +1,15 @@
+{
+    "name": "Princess Carrier",
+    "description": "Princess carry pose of the player, layered over movement by Offset Movement Animation.",
+    "priority": 2099002002,
+    "conditions": [
+        {
+            "condition": "HasSpell",
+            "requiredVersion": "1.0.0.0",
+            "Spell": {
+                "pluginName": "CarryThem.esp",
+                "formID": "000811"
+            }
+        }
+    ]
+}
